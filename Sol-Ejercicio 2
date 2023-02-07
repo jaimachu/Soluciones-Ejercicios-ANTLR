@@ -1,0 +1,11 @@
+grammar Numbers;
+n : (ENTERO | ESPACIO)+;
+S : [\t\n\r] -> skip;
+ENTERO : [0-9]+ {
+    int n = Integer.parseInt(getText());
+    if (n % 3 == 0){
+        n = n + 5;
+    }
+    System.out.print(n + " ");
+    };
+ESPACIO : ' ' -> skip;
