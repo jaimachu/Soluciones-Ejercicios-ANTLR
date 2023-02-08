@@ -1,0 +1,64 @@
+grammar Numbers;
+g : (PALABRA | SIGNOS | SALTO)+;
+// Definimos los tokens
+PALABRA : (MAYUSCULA | MINUSCULA)+{
+    String s = getText();
+    int len = s.length()-1;
+    char ultimo = s.charAt(len);
+    int ascii = (int) ultimo;
+    String cadena = "";
+    if (ascii == 67 || ascii == 97 || ascii == 69 || ascii == 101 || ascii == 73 || ascii == 105 || ascii == 79 || ascii == 111 || ascii == 85 || ascii == 117)
+        for (int i = 0; i < s.length(); i++){
+            ascii = (int) s.charAt(i);
+            // Mayusculas
+            if (ascii >= 65 && ascii <= 90){
+                if (ascii == 65)
+                    ascii = 90;
+                else
+                    ascii = ascii-1;
+            }
+            // Minusculas
+            else if (ascii >= 97 && ascii <= 122){
+                if (ascii == 97)
+                    ascii = 122;
+                else
+                    ascii = ascii-1;
+            }
+            // Otro caso
+            else{
+                ascii = ascii-1;
+            }
+            char asciiChar = (char) ascii;
+            cadena = cadena + asciiChar;
+        }
+    else
+        for (int i = 0; i < s.length(); i++){
+            ascii = (int) s.charAt(i);
+           // Mayusculas
+            if (ascii >= 65 && ascii <= 90){
+                if (ascii == 90)
+                    ascii = 65;
+                else
+                    ascii = ascii+1;
+            }
+            // Minusculas
+            else if (ascii >= 97 && ascii <= 122){
+                if (ascii == 122)
+                    ascii = 97;
+                else
+                    ascii = ascii+1;
+            }
+            // Otro caso
+            else{
+                ascii = ascii+1;
+            }
+            char asciiChar = (char) ascii;
+            cadena = cadena + asciiChar;
+        }
+    System.out.println(cadena);
+};
+SIGNOS : '.' | ',' | ';' | ':' | '?' | '!' | '¿' | '¡';
+SALTO : '\n' | ' ';
+fragment
+MAYUSCULA : [A-Z]+;
+MINUSCULA : [a-z]+;
