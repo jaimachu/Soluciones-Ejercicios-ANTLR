@@ -1,0 +1,10 @@
+grammar Numbers;
+a : (TODO | VOCALES  | SALTO)+;
+VOCALES : [aeiou] {
+    String c = getText();
+    String mayus = c.toUpperCase();
+    System.out.print(mayus);};
+SALTO : [\n\r\t] {System.out.print(" ");};
+TODO : .{
+    System.out.print(getText());
+};
