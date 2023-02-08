@@ -1,0 +1,19 @@
+grammar Numbers;
+g : (CADENA';')+;
+// Definimos los tokens
+CADENA : NUMEROS('-'NUMEROS)?{
+    String s = getText();
+    if (!s.contains("-")){
+        System.out.print(s+",");
+    }
+    else{
+        String[] particion = s.split("-");
+        String Charprimero = particion[0];
+        String Charultimo = particion[1];
+        int primero = Integer.parseInt(Charprimero);
+        int ultimo = Integer.parseInt(Charultimo);
+        for (int i = primero; i <= ultimo; i++)
+            System.out.print(i+",");
+    }
+};
+NUMEROS : [0-9]+;
