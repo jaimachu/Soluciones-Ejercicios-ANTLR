@@ -1,0 +1,5 @@
+grammar Numbers;
+g : (ESPACIO*PALABRA+ESPACIO*)+;
+// Definimos los tokens
+PALABRA : [a-zA-Z]+{System.out.print(getText()+" ");};
+ESPACIO : ' '+;
