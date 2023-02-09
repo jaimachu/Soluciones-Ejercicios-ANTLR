@@ -1,0 +1,15 @@
+grammar Numbers;
+g : ((EMPIEZAm | EMPIEZAM)+NUEVALINEA)+;
+// Tokens
+EMPIEZAm : ('m'[a-zA-Z]*)+{
+    String s = getText();
+    s = s.toLowerCase();
+    System.out.print(s+" ");
+};
+EMPIEZAM : ('M'[a-zA-Z]*)+{
+    String s = getText();
+    s = s.toUpperCase();
+    System.out.println(s+" ");
+};
+ESPACIO : ' ' -> skip;
+NUEVALINEA : [\r\n]+;
